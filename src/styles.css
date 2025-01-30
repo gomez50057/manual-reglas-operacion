@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --doradoOsc: #bc955b;
+  --doradoClr: #DEC9A3;
+  --vinoOsc: #691B32;
+  --vinoClr: #A02142;
+  --grisOsc: #707271;
+  --grisClr: #98989a;
+  --blanco: #F5F3F5;
+}
+
+.container {
+  max-width: 816px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+
+  /* background-image: url('../public/img/Recurso\ 4.png');  */
+  background-repeat: repeat; /* Repetir la imagen */
+  background-position: left; /* Ajustar la imagen a la izquierda */
+
+  
+}
+
+
+
+
+.content {
+  flex-grow: 1;
+}
+
+
+.container {
+  max-width: 816px;
+  margin: 0 auto;
+  padding: 20px;
+  /* Esto hará que el contenedor se ajuste automáticamente en altura */
+  display: flex;
+  flex-direction: column;
+  /* Esto permite el desplazamiento vertical si el contenido excede el tamaño del contenedor */
+  overflow-y: none;
+}

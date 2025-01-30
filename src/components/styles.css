@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+  --doradoOsc: #bc955b;
+  --doradoClr: #DEC9A3;
+  --vinoOsc: #691B32;
+  --vinoClr: #A02142;
+  --grisOsc: #707271;
+  --grisClr: #98989a;
+  --blanco: #F5F3F5;
+}
+
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* overflow-y: scroll; */
+::-webkit-scrollbar {
+  width: 4.5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--grisClr);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+h1,
+h2 {
+  font-size: 45px;
+  color: var(--vinoOsc);
+  font-weight: 400;
+}
+
+h1 span,
+h2 span {
+  font-weight: 700;
+}
+
+p {
+  color: var(--grisOsc);
+}
+
+/*  */
+/* Navbar */
+/*  */
+
+/* .navbar {
+  padding: 20px;
+}
+*/
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  margin-bottom: 10px;
+  width: auto;
+  height: 60px;
+}
+
+
+.titulo_name {
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(160, 33, 66);
+  background: radial-gradient(circle, rgba(160, 33, 66, 1) 13%, rgba(105, 27, 50, 1) 70%);
+}
+
+.buttonContainer {
+  display: block;
+  position: relative;
+}
+
+.button {
+  white-space: nowrap;
+  background: linear-gradient(to right, #63172C, #B12D48);
+  color: var(--blanco);
+  font-weight: 700;
+  font-size: 19px;
+  padding: 10px 20px;
+  border-radius: 0 15px 0 15px;
+  display: inline-block;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+
+.nameFicha {
+  max-width: 650px;
+  /* Ancho máximo del contenedor */
+}
+
+.nameFicha p {
+  color: var(--blanco);
+  font-size: xx-large;
+  font-weight: 700;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.titulo_name img {
+  width: 60px;
+  height: auto;
+}
+
+
+
+/*  */
+/*  */
+/*  */
+
+.ficha .ficha_titulo {
+  position: relative;
+  bottom: 50px;
+  right: 40px;
+  width: auto;
+  height: 47px;
+  margin: 0;
+}
+
+.ficha .ficha_titulo img {
+  width: auto;
+  height: 47px;
+  max-width: calc(700px/2);
+}
+
+.ficha_DESCRIPCION,
+.ficha_OBJETIVO,
+.ficha_POBLACION,
+.ficha_MODALIDAD,
+.ficha_REQUISITOS,
+.ficha_APOYO,
+.ficha_FECHA,
+.ficha_CONTACTO,
+.ficha_QR {
+  background-color: var(--blanco);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: justify;
+}
+
+.ficha_OBJETIVO,
+.ficha_POBLACION,
+.ficha_FECHA,
+.ficha_CONTACTO,
+.ficha_QR {
+  max-width: calc(750px/2);
+}
+
+/* .ficha_DESCRIPCION,
+.ficha_OBJETIVO,
+.ficha_REQUISITOS,
+.ficha_APOYO {
+  max-width: calc(100% - 40px);
+} */
+
+.ficha p {
+  margin: 0;
+  text-align: justify;
+}
+
+.ficha {
+  max-width: 816px;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  /* background: url('../../public/img/Recurso\ 4.png') repeat-y left; */
+  /* Ruta de tu imagen de fondo */
+
+}
+
+.ficha_DESCRIPCION,
+.ficha_MODALIDAD,
+.ficha_REQUISITOS,
+.ficha_APOYO {
+  grid-column: 1 / span 2;
+}
+
+.ficha_QR {
+  grid-column: auto;
+  grid-row: span 2;
+  text-align: center;
+
+}
+
+
+.img_qr {
+  width: 100%;
+}
+
+
+.img_qr img {
+  width: 100%;
+  height: auto;
+}
+
+.ficha_QR p {
+  color: var(--doradoClr);
+  font-weight: 700;
+  text-align: center;
+}
+
+.ficha_OBJETIVO,
+.ficha_POBLACION,
+.ficha_FECHA,
+.ficha_CONTACTO {
+  grid-column: auto;
+}
+
+
+/* 
+button {
+  opacity: 0;
+  cursor: pointer;
+} */
