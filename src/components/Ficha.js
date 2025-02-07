@@ -147,10 +147,18 @@ const Ficha = ({ id }) => {
                 </div>
                 <div className='ficha_QR'>
                     <div className="img_qr">
-                        <img src={`${qrs}${fichaActual && fichaActual.id ? fichaActual.id.toLowerCase() + ".png" : "default.png"}`} alt={fichaActual && fichaActual.id ? fichaActual.id : "id"} />
+                        <img
+                            src={
+                                fichaActual && fichaActual.titulo
+                                    ? `${qrs}${fichaActual.titulo
+                                        .toLowerCase()
+                                        .replace(/\s+/g, ' ')}.png`
+                                    : "default.png"
+                            }
+                            alt={fichaActual && fichaActual.titulo ? fichaActual.titulo : "titulo"}
+                        />
                     </div>
                     <p>Consulta las reglas de operación</p>
-
                     {fichaActual && fichaActual.link ? (
                         fichaActual.link.split('\n').map((paragraph, index) => (
                             <React.Fragment key={index}>
@@ -162,6 +170,7 @@ const Ficha = ({ id }) => {
                         "Texto no encontrado"
                     )}
                 </div>
+
                 <div className='ficha_CONTACTO'>
                     <div className="ficha_titulo">
                         <div className="buttonContainer"><p className="button">Contacto</p></div>
