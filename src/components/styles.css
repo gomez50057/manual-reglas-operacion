@@ -228,3 +228,12 @@ button {
   opacity: 0;
   cursor: pointer;
 } */
+
+@media print {
+
+  .page-break {
+    break-inside: avoid;
+    margin-top: 20px;
+  }
+
+}
