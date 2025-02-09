@@ -1,7 +1,18 @@
 const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
 
 // Función para generar un retardo (delay)
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+// Ruta de la carpeta donde se guardarán los PDFs
+const pdfsDir = path.join(__dirname, 'pdfs');
+
+// Verificamos si la carpeta 'pdfs' existe y, si no, la creamos
+if (!fs.existsSync(pdfsDir)) {
+  fs.mkdirSync(pdfsDir);
+  console.log(`Carpeta creada: ${pdfsDir}`);
+}
 
 (async () => {
   // Lanzamos el navegador (headless: false para ver el proceso; en producción, puede ser true)
@@ -18,9 +29,9 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     // Esperamos un tiempo para que la página se estabilice (ajusta el tiempo si es necesario)
     await delay(3100);
 
-    // Generamos el PDF de la página actual, eliminando los márgenes
+    // Generamos el PDF de la página actual, eliminando los márgenes (o ajustándolos)
     await page.pdf({
-      path: `pagina-${i}.pdf`,
+      path: path.join(pdfsDir, `pagina-${i}.pdf`),
       format: 'A4',
       printBackground: true,
       margin: {
@@ -30,7 +41,7 @@ const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
         left: '0px'
       }
     });
-    console.log(`Página ${i} guardada como PDF sin márgenes.`);
+    console.log(`Página ${i} guardada como PDF en la carpeta 'pdfs'.`);
 
     // Si no es la última página, simulamos presionar la flecha derecha para avanzar
     if (i < totalPaginas) {
