@@ -5,6 +5,12 @@ const path = require('path');
 // Función para generar un retardo (delay)
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+// Función para sanitizar el nombre del archivo (eliminando caracteres no permitidos)
+const sanitizeFilename = filename => {
+  // Reemplaza caracteres no válidos por un guion o elimina
+  return filename.replace(/[\/\\?%*:|"<>]/g, '').trim() || 'Texto no encontrado';
+};
+
 // Ruta de la carpeta donde se guardarán los PDFs
 const pdfsDir = path.join(__dirname, 'pdfs');
 
@@ -29,9 +35,19 @@ if (!fs.existsSync(pdfsDir)) {
     // Esperamos un tiempo para que la página se estabilice (ajusta el tiempo si es necesario)
     await delay(3100);
 
-    // Generamos el PDF de la página actual, eliminando los márgenes (o ajustándolos)
+    // Extraemos el texto contenido en el <p> dentro del <div className='titulo_name'>
+    const rawTitle = await page.evaluate(() => {
+      const pElem = document.querySelector('.titulo_name p');
+      return pElem ? pElem.innerText : 'Texto no encontrado';
+    });
+
+    // Sanitizamos el título para que pueda usarse como nombre de archivo
+    const sanitizedTitle = sanitizeFilename(rawTitle);
+    const filePath = path.join(pdfsDir, `${sanitizedTitle}.pdf`);
+
+    // Generamos el PDF de la página actual, eliminando o ajustando los márgenes
     await page.pdf({
-      path: path.join(pdfsDir, `pagina-${i}.pdf`),
+      path: filePath,
       format: 'A4',
       printBackground: true,
       margin: {
@@ -41,7 +57,7 @@ if (!fs.existsSync(pdfsDir)) {
         left: '0px'
       }
     });
-    console.log(`Página ${i} guardada como PDF en la carpeta 'pdfs'.`);
+    console.log(`Página ${i} guardada como PDF con nombre: ${sanitizedTitle}.pdf`);
 
     // Si no es la última página, simulamos presionar la flecha derecha para avanzar
     if (i < totalPaginas) {
